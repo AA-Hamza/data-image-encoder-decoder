@@ -15,7 +15,7 @@ This script just encodes text into an image and can retrieve the text back
 It uses 7bits of each pixel to encode the message, to be exact it uses the last 3bits, 2bits, 2bits from each byte of the 3 bytes rgb pixel.
 The program stores META data needed for retrivement in the first 2 pixels (The length, The step). The program tries to space out the used pixels so the image don't get much distorted.
 
-##Example
+## Example
 Here is a shrek image
 
 ![](readme_data/Shrek.jpg)
@@ -34,5 +34,6 @@ and here are the result
 And you can get the text back by
 
 ```
-python3 main.py dncode readme_data/encoded_shrek.jpg
+python3 main.py decode readme_data/encoded_shrek.jpg
 ```
+
