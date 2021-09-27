@@ -2,8 +2,10 @@
 This script just encodes text into an image and can retrieve the text back
 
 ## USAGE:
-FOR ENCODING: python3 main.py encode <image name> \[file name\] \[output name\]
-FOR DECODING: python3 main.py decode <image name> \[output file\]
+### FOR ENCODING: 
+> python3 main.py encode <image name> \[file name\] \[output name\]
+### FOR DECODING: 
+> python3 main.py decode <image name> \[output file\]
 
 ## DEPENDINCIES:
  * Numpy
@@ -21,11 +23,16 @@ Here is a shrek image
 We are going to encode the whole transcript of Shrek in the image
 using 
 
-`<addr>` python3 main.py encode readme_data/Shrek.jpg readme_data/Shrek_transcript readme_data/encoded_shrek.png
+```
+python3 main.py encode readme_data/Shrek.jpg readme_data/Shrek_transcript readme_data/encoded_shrek.png
+```
+
 and here are the result
 
 ![](readme_data/encoded_shrek.png)
 
 And you can get the text back by
 
-`<addr>` python3 main.py dncode readme_data/encoded_shrek.jpg
+```
+python3 main.py dncode readme_data/encoded_shrek.jpg
+```
