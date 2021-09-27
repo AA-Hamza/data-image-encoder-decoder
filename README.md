@@ -35,5 +35,8 @@ And you can get the text back by
 
 ```
 python3 main.py decode readme_data/encoded_shrek.jpg
-```
+This is the transcript for the 2001 film, [[Shrek (film)|Shrek]].
 
+==Transcript==
+'''[[Shrek (character)|SHREK]]''': (Reading a storybook) Once upon a time there was a [[Storybook Princess|lovely princess]]. But she had an enchantment upon her of a fearful sort which could only be broken by love's first kiss. She was locked away in a castle guarded by a terrible [[Storybook Dragon|fire-breathing dragon]]. Many brave knights had attempted to free her from this dreadful prison, but non prevailed. She waited in the dragon's keep in the highest room of the tallest tower for [[Storybook Prince|her true love]] and true love's first kiss. (Laughs, tears out a pa.....
+```
