@@ -47,7 +47,6 @@ def write_file(file_name, message):
     return message
 
 def read_image(image_file_name):
-    #print(image_file_name)
     try:
         im = np.array(Image.open(image_file_name))
     except OSError as err:
@@ -132,8 +131,8 @@ def main():
         eprint("Unsupported format, the image isn't rgb 3 bytes")
         exit()
     _IMAGE_SHAPE = (image_array.shape[0], image_array.shape[1])
-    _META_DATA_LEN_LOCATION = (0, 0)#_IMAGE_SHAPE[1]-2)
-    _META_DATA_STEP_LOCATION = (0, 1)#_IMAGE_SHAPE[1]-1)
+    _META_DATA_LEN_LOCATION = (0, 0)
+    _META_DATA_STEP_LOCATION = (0, 1)
 
     if (mode == _ENCODING):
         if (message_file_name != None):
@@ -172,29 +171,21 @@ def main():
         encoding_index = 2
         message_index = 0
         while (message_index < len(message)):
-            #print(len(message), message_index, _MAX_POSSIBLE_MESSAGE, _STEP, encoding_index)
             char = message[message_index]
             image_array[encoding_index] = save_into_last_7_bits(image_array[encoding_index], char)
             encoding_index += _STEP
             message_index += 1
 
         image_array = image_array.reshape((*_IMAGE_SHAPE, 3))
-        #print('steps ', *image_array[_META_DATA_STEP_LOCATION[0]][_META_DATA_STEP_LOCATION[1]])
-        #print('len ', *image_array[_META_DATA_LEN_LOCATION[0]][_META_DATA_LEN_LOCATION[1]])
         Image.fromarray(image_array).save(output_image_file_name, quality=100, subsampling=0)
         exit(0)
 
     elif (mode == _DECODING):
-        #print(image_array)
         message = ''
-        #print('steps ', *image_array[_META_DATA_STEP_LOCATION[0]][_META_DATA_STEP_LOCATION[1]])
-        #print('len ', *image_array[_META_DATA_LEN_LOCATION[0]][_META_DATA_LEN_LOCATION[1]])
         _STEP = from_3_bytes(*image_array[_META_DATA_STEP_LOCATION[0]][_META_DATA_STEP_LOCATION[1]])
         _MESSAGE_LEN = from_3_bytes(*image_array[_META_DATA_LEN_LOCATION[0]][_META_DATA_LEN_LOCATION[1]])
         image_array = image_array.reshape((_IMAGE_SHAPE[0]*_IMAGE_SHAPE[1], 3))
         
-        #print(_STEP, _MESSAGE_LEN)
-
         decoding_index = 2
         message_index = 0
         while (message_index < _MESSAGE_LEN):
@@ -208,7 +199,6 @@ def main():
             write_file(sys.stdout, message)
 
 
-        
 
 if __name__ == "__main__":
     main()
