@@ -104,8 +104,9 @@ def save_into_last_7_bits(arr, char):
     #arr(first, second, third)
     ascii_char = ord(char)
     if (ascii_char > 127):
-        eprint("This character "+char+" Can't be encoded, Can't fit 7 bits, passing it")
-        return arr
+        eprint("This character "+char+" Can't be encoded, Can't fit 7 bits, replacing with ?")
+        char = '?'      #replace unrepresentable character with '?'
+        save_into_last_7_bits(arr, char)
     first, second, third = arr
     first  = first>>3<<3
     second = second>>2<<2
